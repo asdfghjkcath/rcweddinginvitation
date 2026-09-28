@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>[hidden]{display:none!important}</style>
+<title>Ron &amp; Cath</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Pinyon+Script&family=Jost:wght@400;500&display=swap">
+<style>
+  /* One deliberate look: a watercolor paper invitation in dusty blue and sage. */
+  :root {
+    --paper: #F7F5EF;
+    --card: #FFFEFA;
+    --ink: #33403F;
+    --ink-soft: #5E6B69;
+    --blue: #7C93AE;
+    --blue-deep: #4F6785;
+    --blue-night: #3E5572;
+    --blue-soft: #E1E8F0;
+    --sage: #8FA38A;
+    --sage-deep: #5A7055;
+    --sage-soft: #E3E9DC;
+    --sage-mid: #B9C7B1;
+    --gold: #C9A96E;
+    --line: #CBD2C6;
+    --serif: "Cormorant Garamond", "Cormorant", Georgia, "Times New Roman", serif;
+    --script: "Pinyon Script", "Snell Roundhand", "Apple Chancery", cursive;
+    --sans: "Jost", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--blue-deep); outline-offset: 3px; border-radius: 4px; }
+
+  /* Full-bleed bands, content held in .inner with the side gutter */
+  .band { position: relative; overflow: hidden; padding-block: clamp(64px, 10vw, 120px); isolation: isolate; }
+  .inner { position: relative; z-index: 2; max-width: 1040px; margin: 0 auto; padding-inline: 16px; }
+  .narrow { max-width: 640px; margin-inline: auto; }
+
+  .wash { position: absolute; z-index: 0; pointer-events: none; background-size: cover; background-position: center; }
+  .wash.blue { background-image: url("img/wash-blue.webp"); }
+  .wash.sage { background-image: url("img/wash-sage.webp"); }
+  .flora { position: absolute; z-index: 1; pointer-events: none; width: clamp(200px, 38vw, 440px); }
+  .flora.tl { top: -8px; left: -8px; }
+  .flora.tr { top: -8px; right: -8px; transform: scaleX(-1); }
+  .flora.bl { bottom: -8px; left: -8px; transform: scaleY(-1); }
+  .flora.br { bottom: -8px; right: -8px; transform: scale(-1, -1); }
+  .flora.sm { width: clamp(150px, 26vw, 300px); }
+
+  .eyebrow {
+    font-family: var(--sans); font-size: .74rem; letter-spacing: .3em; text-transform: uppercase;
+    color: var(--sage-deep); margin: 0;
+  }
+  h2 {
+    font-family: var(--script); font-weight: 400;
+    font-size: clamp(2.8rem, 8vw, 4rem); line-height: 1.1;
+    color: var(--blue-deep); margin: .15em 0 0; text-wrap: balance;
+  }
+  .head { text-align: center; display: grid; gap: 4px; justify-items: center; margin-bottom: clamp(30px, 5vw, 48px); }
+  .sprig { width: min(300px, 70vw); margin: 10px auto 0; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--sans); font-size: .8rem; font-weight: 500;
+    letter-spacing: .16em; text-transform: uppercase; text-decoration: none;
+    padding: 15px 28px; border-radius: 999px;
+    background: var(--blue-deep); color: #fff;
+    transition: background .2s ease, transform .2s ease, box-shadow .2s ease;
+    box-shadow: 0 6px 18px rgba(79, 103, 133, .25);
+  }
+  .btn:hover { background: var(--blue-night); transform: translateY(-2px); }
+  .btn svg { width: 16px; height: 16px; flex: none; fill: currentColor; }
+  .btn.sage { background: var(--sage-deep); box-shadow: 0 6px 18px rgba(90, 112, 85, .25); }
+  .btn.sage:hover { background: #4B5F47; }
+  .btn.cream { background: var(--card); color: var(--blue-night); box-shadow: 0 6px 22px rgba(0,0,0,.18); }
+  .btn.cream:hover { background: #fff; }
+
+  /* ---------- Hero ---------- */
+  .hero { padding-block: clamp(80px, 11vw, 130px) clamp(70px, 10vw, 120px); background: var(--paper); }
+  .hero .wash { inset: 0; opacity: .55; }
+  .hero-grid { display: grid; gap: clamp(36px, 6vw, 72px); grid-template-columns: 1fr; align-items: center; }
+  @media (min-width: 840px) { .hero-grid { grid-template-columns: 1fr 1fr; } }
+  .hero-text { text-align: center; display: grid; gap: 14px; justify-items: center; }
+  .names {
+    font-family: var(--script); font-weight: 400;
+    font-size: clamp(4.6rem, 18vw, 8rem); line-height: .92; color: var(--blue-deep); margin: 6px 0 0;
+  }
+  .names .amp { display: block; font-size: .46em; color: var(--sage-deep); line-height: 1.15; }
+  .fullnames { font-family: var(--sans); font-size: .8rem; letter-spacing: .22em; text-transform: uppercase; color: var(--ink-soft); margin: 0; line-height: 2.1; }
+  .date-line { display: flex; align-items: center; gap: 16px; margin-top: 6px; }
+  .date-line .big { font-family: var(--serif); font-size: 3.4rem; font-weight: 500; line-height: 1; color: var(--blue-deep); font-variant-numeric: lining-nums; }
+  .date-line .side { font-family: var(--sans); font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; padding-block: 8px; border-block: 1px solid var(--sage-mid); min-width: 96px; text-align: center; color: var(--ink); }
+  .place { margin: 0; font-style: italic; color: var(--ink-soft); }
+
+  .arch-wrap { position: relative; width: min(100%, 420px); margin: 0 auto; }
+  .arch {
+    position: relative; z-index: 1; aspect-ratio: 2 / 3;
+    border-radius: 999px 999px 20px 20px; overflow: hidden; background: var(--sage-soft);
+    border: 8px solid var(--card); box-shadow: 0 20px 50px rgba(62, 85, 114, .18);
+  }
+  .arch img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
+  .arch-wrap::before {
+    content: ""; position: absolute; z-index: 0; inset: 22px -22px -22px 22px;
+    border-radius: 999px 999px 20px 20px; background: var(--sage-mid); opacity: .7;
+  }
+  .arch-wrap .flora { width: 62%; z-index: 2; }
+  .arch-wrap .flora.tl { top: -34px; left: -40px; }
+  .arch-wrap .flora.br { bottom: -40px; right: -46px; }
+
+  /* ---------- Message ---------- */
+  .message { background: var(--sage-soft); text-align: center; }
+  .message .wash { inset: 0; opacity: .5; }
+  .message .lead { font-family: var(--script); font-size: clamp(2.6rem, 7vw, 3.4rem); color: var(--sage-deep); line-height: 1.15; margin: 0 0 18px; }
+  .message p.verse { font-size: clamp(1.3rem, 3.4vw, 1.65rem); font-style: italic; line-height: 1.8; margin: 0; text-wrap: balance; }
+
+  /* ---------- Countdown ---------- */
+  .count { background: var(--blue-deep); color: #fff; text-align: center; }
+  .count .wash { inset: 0; opacity: .22; mix-blend-mode: screen; }
+  .count .eyebrow { color: var(--sage-mid); }
+  .count h2 { color: #fff; }
+  .countdown { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 540px; margin: 0 auto; }
+  .unit { padding: 20px 4px 16px; border-radius: 999px 999px 16px 16px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.28); }
+  .unit b { display: block; font-family: var(--serif); font-weight: 500; font-size: clamp(2.1rem, 7.5vw, 3rem); line-height: 1; font-variant-numeric: tabular-nums lining-nums; }
+  .unit span { font-family: var(--sans); font-size: .64rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.78); }
+  .count-note { margin: 22px 0 0; font-style: italic; color: rgba(255,255,255,.85); }
+
+  /* ---------- Events ---------- */
+  .events-band { background: var(--paper); }
+  .events-band .wash { inset: 0; opacity: .4; }
+  .events { display: grid; gap: 26px; grid-template-columns: 1fr; }
+  @media (min-width: 780px) { .events { grid-template-columns: 1fr 1fr; } }
+  .event {
+    position: relative; text-align: center; display: grid; gap: 10px; justify-items: center; align-content: start;
+    padding: clamp(46px, 7vw, 64px) clamp(22px, 5vw, 40px) clamp(30px, 5vw, 42px);
+    border-radius: 999px 999px 26px 26px; background: var(--card);
+    box-shadow: 0 16px 40px rgba(62, 85, 114, .1);
+  }
+  .event.blue { background: linear-gradient(180deg, var(--blue-soft), var(--card) 70%); }
+  .event.sage { background: linear-gradient(180deg, var(--sage-soft), var(--card) 70%); }
+  .event .ico { width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center; color: #fff; }
+  .event.blue .ico { background: var(--blue); }
+  .event.sage .ico { background: var(--sage); }
+  .event .ico svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+  .event .kind { font-family: var(--script); font-size: 2.7rem; line-height: 1.1; }
+  .event.blue .kind { color: var(--blue-deep); }
+  .event.sage .kind { color: var(--sage-deep); }
+  .event .when { font-family: var(--sans); font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink); line-height: 1.8; }
+  .event h3 { font-family: var(--serif); font-weight: 600; font-size: 1.5rem; line-height: 1.25; margin: 6px 0 0; text-wrap: balance; }
+  .event .addr, .event .officiant { margin: 0; color: var(--ink-soft); }
+  .event .officiant { font-style: italic; font-size: 1.05rem; }
+  .event .btn { margin-top: 14px; }
+
+  /* ---------- Gallery (polaroids) ---------- */
+  .gallery-band { background: var(--blue-soft); }
+  .gallery-band .wash { inset: 0; opacity: .55; }
+  .gallery {
+    display: grid; grid-auto-flow: column; grid-auto-columns: min(66%, 270px);
+    gap: 22px; overflow-x: auto; scroll-snap-type: x mandatory;
+    padding: 20px 16px 30px; margin-inline: -16px;
+    scrollbar-width: thin; scrollbar-color: var(--blue) transparent;
+  }
+  .polaroid {
+    all: unset; cursor: zoom-in; scroll-snap-align: center; display: block;
+    background: var(--card); padding: 10px 10px 40px; border-radius: 4px;
+    box-shadow: 0 10px 26px rgba(62, 85, 114, .2);
+    transform: rotate(var(--r, -2deg)); transition: transform .35s ease;
+    position: relative;
+  }
+  .polaroid:nth-child(even) { --r: 2.2deg; }
+  .polaroid:nth-child(3n) { --r: -1deg; }
+  .polaroid:hover, .polaroid:focus-visible { transform: rotate(0) translateY(-4px); }
+  .polaroid:focus-visible { outline: 2px solid var(--blue-deep); outline-offset: 4px; }
+  .polaroid img { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; }
+  .polaroid::after {
+    content: attr(data-cap); position: absolute; left: 0; right: 0; bottom: 8px; text-align: center;
+    font-family: var(--script); font-size: 1.4rem; color: var(--blue-deep);
+  }
+  .polaroid::before {
+    content: ""; position: absolute; top: -10px; left: 50%; width: 70px; height: 22px; transform: translateX(-50%) rotate(-3deg);
+    background: rgba(185, 199, 177, .75); z-index: 1;
+  }
+  .swipe-hint { text-align: center; font-family: var(--sans); font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: var(--blue-deep); margin: 4px 0 0; }
+
+  .lightbox { position: fixed; inset: 0; z-index: 50; background: rgba(35, 45, 44, .92); display: grid; place-items: center; padding: 24px; }
+  .lightbox[hidden] { display: none; }
+  .lightbox img { max-height: 88vh; max-width: min(92vw, 640px); border-radius: 10px; object-fit: contain; border: 8px solid var(--card); }
+  .lightbox button {
+    position: absolute; top: calc(14px + env(safe-area-inset-top, 0px)); right: 14px;
+    background: rgba(255,255,255,.16); color: #fff; border: 0; width: 44px; height: 44px; border-radius: 50%; font-size: 1.5rem; cursor: pointer;
+  }
+
+  /* ---------- Entourage ---------- */
+  .ent-band { background: var(--paper); }
+  .ent { display: grid; gap: clamp(36px, 5vw, 50px); }
+  .group { text-align: center; display: grid; gap: 14px; justify-items: center; }
+  .group h3 {
+    font-family: var(--sans); font-weight: 500; font-size: .74rem; letter-spacing: .26em; text-transform: uppercase;
+    color: #fff; background: var(--blue); padding: 7px 18px; border-radius: 999px; margin: 0;
+  }
+  .group:nth-child(even) h3 { background: var(--sage); }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 24px; align-items: start; width: 100%; }
+  .pair .col { display: grid; gap: 4px; align-content: start; }
+  .pair .col:first-child { text-align: right; }
+  .pair .col:last-child { text-align: left; }
+  .sub { font-style: italic; color: var(--sage-deep); font-size: 1.08rem; }
+  .names-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; line-height: 1.4; }
+  .solo { display: grid; gap: 24px 16px; grid-template-columns: repeat(2, 1fr); width: 100%; }
+  @media (min-width: 640px) { .solo { grid-template-columns: repeat(3, 1fr); } }
+  .solo .girls { grid-column: 1 / -1; }
+  @media (max-width: 639px) { .solo .col:nth-child(3) { grid-column: 1 / -1; } }
+  .girls-names { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 28px; }
+  .girls-names span { white-space: nowrap; }
+  .solo .col { display: grid; gap: 4px; align-content: start; }
+  .solo .role { font-family: var(--script); font-size: 1.7rem; line-height: 1.1; color: var(--blue-deep); }
+  @media (max-width: 420px) { .pair { gap: 6px 14px; } body { font-size: 1.12rem; } }
+
+  /* ---------- Attire ---------- */
+  .attire-band { background: var(--sage-soft); text-align: center; }
+  .attire-band .wash { inset: 0; opacity: .55; }
+  .attire-frame {
+    max-width: 520px; margin: 0 auto; background: var(--card); padding: 12px;
+    border-radius: 24px; box-shadow: 0 18px 44px rgba(90, 112, 85, .2);
+    transform: rotate(-1deg);
+  }
+  .attire-frame img { border-radius: 14px; }
+  .attire-note { margin: 28px auto 0; font-style: italic; font-size: 1.3rem; color: var(--sage-deep); max-width: 30em; }
+
+  /* ---------- Gifts ---------- */
+  .gift-band { background: var(--paper); }
+  .gift-band .wash { inset: 0; opacity: .45; }
+  .prose { text-align: center; display: grid; gap: 16px; }
+  .prose p { margin: 0; }
+  .qr-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 22px; margin-top: 34px; }
+  .qr {
+    margin: 0; background: var(--card); border-radius: 22px; padding: 16px 16px 14px;
+    display: grid; gap: 10px; justify-items: center; width: 210px;
+    box-shadow: 0 12px 30px rgba(62, 85, 114, .12);
+  }
+  .qr img { width: 100%; border-radius: 8px; }
+  .qr span { font-family: var(--sans); font-size: .76rem; letter-spacing: .22em; text-transform: uppercase; color: #fff; padding: 5px 16px; border-radius: 999px; background: var(--blue); }
+  .qr.g span { background: var(--sage); }
+  .small-note { font-size: 1.02rem; color: var(--ink-soft); font-style: italic; text-align: center; margin: 20px 0 0; }
+
+  /* ---------- Snap ---------- */
+  .snap-band { background: var(--blue-soft); }
+  .snap-band .wash { inset: 0; opacity: .5; }
+  .snap-grid { display: grid; gap: 32px; align-items: center; grid-template-columns: 1fr; }
+  @media (min-width: 780px) { .snap-grid { grid-template-columns: 1.2fr 1fr; } .snap-grid .prose { text-align: left; } }
+  .snap-card { margin: 0 auto; width: 250px; background: var(--card); padding: 12px; border-radius: 22px; box-shadow: 0 14px 34px rgba(62, 85, 114, .16); transform: rotate(2deg); }
+  .snap-card img { border-radius: 12px; }
+  .snap-grid .head { margin-bottom: 18px; }
+  @media (min-width: 780px) { .snap-grid .head { justify-items: start; text-align: left; } }
+
+  /* ---------- RSVP ---------- */
+  .rsvp-band { background: var(--blue-night); color: #fff; text-align: center; }
+  .rsvp-band .wash { inset: 0; opacity: .25; mix-blend-mode: screen; }
+  .rsvp-band .flora { opacity: .9; }
+  .rsvp-band .eyebrow { color: var(--sage-mid); }
+  .rsvp-card { display: grid; gap: 20px; justify-items: center; }
+  .rsvp-card .seat { font-family: var(--script); font-size: clamp(2.8rem, 8vw, 4rem); line-height: 1.1; margin: 0; }
+  .rsvp-card p { margin: 0; max-width: 34em; }
+  .rsvp-card .limited { font-style: italic; color: rgba(255,255,255,.82); }
+  .rsvp-qr { display: none; }
+  @media (min-width: 760px) and (hover: hover) {
+    .rsvp-qr { display: grid; gap: 8px; justify-items: center; margin-top: 6px; }
+    .rsvp-qr img { width: 130px; border-radius: 12px; background: #fff; padding: 8px; }
+    .rsvp-qr span { font-family: var(--sans); font-size: .7rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.75); }
+  }
+
+  footer { background: var(--sage-soft); text-align: center; padding-block: 64px 120px; position: relative; overflow: hidden; }
+  footer .inner { display: grid; gap: 6px; justify-items: center; }
+  footer .names-sm { font-family: var(--script); font-size: 3.2rem; color: var(--blue-deep); line-height: 1.1; }
+  footer .d { font-family: var(--sans); font-size: .76rem; letter-spacing: .3em; color: var(--sage-deep); }
+  footer .thanks { font-style: italic; color: var(--ink-soft); margin: 8px 0 0; }
+
+  /* ---------- Song pill ---------- */
+  .song {
+    appearance: none; border: 0; cursor: pointer; text-align: left;
+    position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 20;
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--card); color: var(--ink); text-decoration: none;
+    border-radius: 999px; padding: 8px 18px 8px 8px;
+    box-shadow: 0 8px 24px rgba(51, 64, 63, .2);
+    font-family: var(--sans); font-size: .8rem;
+  }
+  .song .disc {
+    width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center;
+    background: conic-gradient(var(--blue-deep), var(--sage), var(--blue), var(--blue-deep));
+    animation: none;
+  }
+
+  .song .ic-pause { display: none; margin-left: 0; }
+  .song.playing .ic-play { display: none; }
+  .song.playing .ic-pause { display: block; }
+  .song[hidden] { display: none; }
+  .song .bars { display: inline-flex; gap: 2px; align-items: flex-end; height: 12px; margin-left: 2px; }
+  .song .bars i { width: 2px; height: 4px; background: var(--sage); border-radius: 1px; }
+  .song.playing .bars i { animation: bar 1s ease-in-out infinite; }
+  .song.playing .bars i:nth-child(2) { animation-delay: .2s; } .song.playing .bars i:nth-child(3) { animation-delay: .4s; }
+  @keyframes bar { 0%,100% { height: 4px; } 50% { height: 12px; } }
+
+  /* ---------- Welcome / envelope ---------- */
+  .welcome {
+    position: fixed; inset: 0; z-index: 60; overflow: hidden;
+    display: grid; place-items: center; padding: 24px 16px;
+    background: var(--paper);
+    transition: opacity .8s ease, visibility .8s ease;
+  }
+  .welcome.gone { opacity: 0; visibility: hidden; pointer-events: none; }
+  .welcome .wash { inset: 0; opacity: .6; }
+  .welcome .flora { width: clamp(220px, 55vw, 520px); }
+  .welcome-card { position: relative; z-index: 2; text-align: center; display: grid; gap: 14px; justify-items: center; max-width: 440px; }
+  .welcome-card .for { font-style: italic; color: var(--ink-soft); margin: 0; font-size: 1.15rem; }
+  .welcome-card .monogram {
+    width: 118px; height: 118px; border-radius: 50%; display: grid; place-items: center;
+    border: 1px solid var(--sage-mid); background: var(--card);
+    font-family: var(--script); font-size: 3.1rem; color: var(--blue-deep); line-height: 1;
+    box-shadow: 0 0 0 7px var(--paper), 0 0 0 8px var(--line);
+  }
+  .welcome-card .wn { font-family: var(--script); font-size: clamp(3.4rem, 13vw, 5rem); color: var(--blue-deep); line-height: 1; margin: 6px 0 0; }
+  .welcome-card .wd { font-family: var(--sans); font-size: .76rem; letter-spacing: .3em; color: var(--sage-deep); }
+  .welcome-card .btn { margin-top: 12px; }
+  .welcome-card .hint { font-family: var(--sans); font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft); margin: 0; }
+  body.locked { overflow: hidden; }
+  .song .disc svg { width: 14px; height: 14px; fill: #fff; margin-left: 2px; }
+  .song small { display: block; color: var(--sage-deep); font-size: .66rem; letter-spacing: .16em; text-transform: uppercase; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .rise { animation: rise .9s ease both; }
+  .rise.d2 { animation-delay: .15s; } .rise.d3 { animation-delay: .3s; }
+  @keyframes rise { from { transform: translateY(12px); } to { transform: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .rise, .song .disc, .song .bars i { animation: none !important; }
+    .welcome { transition: none; }
+    .polaroid, .btn { transition: none; }
+  }
+</style>
+
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="heart" viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.2 0 3.7 1.2 5.3 3.1 1.6-1.9 3.1-3.1 5.3-3.1 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></symbol>
+  <symbol id="pin" viewBox="0 0 24 24"><path d="M12 2.5a7 7 0 0 0-7 7c0 5.3 7 12 7 12s7-6.7 7-12a7 7 0 0 0-7-7zm0 9.6a2.6 2.6 0 1 1 0-5.2 2.6 2.6 0 0 1 0 5.2z"/></symbol>
+  <symbol id="play" viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z"/></symbol>
+  <symbol id="pause" viewBox="0 0 24 24"><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z"/></symbol>
+  <symbol id="note" viewBox="0 0 24 24"><path d="M9 18.5a3 3 0 1 1-2-2.83V5l11-2v12.5a3 3 0 1 1-2-2.83V6.4L9 7.7z"/></symbol>
+  <symbol id="church" viewBox="0 0 24 24"><path d="M12 2v5M9.8 4.2h4.4M5 21V12l7-5 7 5v9M3 21h18M10 21v-4a2 2 0 0 1 4 0v4"/></symbol>
+  <symbol id="glasses" viewBox="0 0 24 24"><path d="M6 3h5l-.4 5.5A2.6 2.6 0 0 1 8.5 11a2.6 2.6 0 0 1-2.1-2.5zM13 3h5l-.4 5.5A2.6 2.6 0 0 1 15.5 11a2.6 2.6 0 0 1-2.1-2.5zM8.5 11v8M15.5 11v8M6 20.5h5M13 20.5h5"/></symbol>
+</svg>
+
+<div class="welcome" id="welcome" role="dialog" aria-modal="true" aria-labelledby="w-title">
+  <div class="wash blue"></div>
+  <img class="flora tl" src="img/bloom-corner.webp" alt="">
+  <img class="flora br" src="img/bloom-corner.webp" alt="">
+  <div class="welcome-card">
+    <div class="monogram" aria-hidden="true">R&amp;C</div>
+    <p class="eyebrow">You are invited</p>
+    <h2 class="wn" id="w-title">Ron &amp; Cath</h2>
+    <span class="wd">11 &middot; 07 &middot; 2026</span>
+    <p class="for">to celebrate our wedding, with the people we love most</p>
+    <button type="button" class="btn" id="open-invite"><svg><use href="#heart"/></svg>Open invitation</button>
+    <p class="hint">With music &middot; turn your sound on</p>
+  </div>
+</div>
+
+<main>
+
+  <!-- Hero -->
+  <header class="band hero">
+    <div class="wash blue"></div>
+    <img class="flora tl" src="img/bloom-corner.webp" alt="">
+    <img class="flora br sm" src="img/bloom-corner.webp" alt="">
+    <div class="inner hero-grid">
+      <div class="hero-text">
+        <p class="eyebrow rise">You are invited to our wedding</p>
+        <h1 class="names rise d2">Ron <span class="amp">&amp;</span> Cath</h1>
+        <p class="fullnames rise d2">Rondelle A. Lagumen<br>and<br>Cathlene B. Ilagan</p>
+        <div class="date-line rise d3" aria-label="Saturday, November 7, 2026">
+          <span class="side">Saturday</span>
+          <span class="big">07</span>
+          <span class="side">Nov 2026</span>
+        </div>
+        <p class="place rise d3">Daet, Camarines Norte</p>
+      </div>
+      <div class="arch-wrap rise d2">
+        <div class="arch"><img src="img/hero.jpg" alt="Ron and Cath embracing, both dressed in white"></div>
+        <img class="flora tl" src="img/bloom-corner.webp" alt="">
+        <img class="flora br" src="img/bloom-corner.webp" alt="">
+      </div>
+    </div>
+  </header>
+
+  <!-- Message -->
+  <section class="band message">
+    <div class="wash sage"></div>
+    <div class="inner narrow">
+      <p class="lead">We have already said &ldquo;I do&rdquo;</p>
+      <p class="verse">and built a life side by side.<br>
+      Now, surrounded by the people we love,<br>
+      we come before God to celebrate our marriage,<br>
+      to ask for His blessing,<br>
+      and to continue choosing one another<br>
+      for all the days to come.</p>
+      <img class="sprig" src="img/bloom-sprig.webp" alt="">
+    </div>
+  </section>
+
+  <!-- Countdown -->
+  <section class="band count">
+    <div class="wash blue"></div>
+    <div class="inner">
+      <div class="head">
+        <p class="eyebrow">Counting the days</p>
+        <h2>Until we meet at the altar</h2>
+      </div>
+      <div class="countdown">
+        <div class="unit"><b id="cd-d">--</b><span>Days</span></div>
+        <div class="unit"><b id="cd-h">--</b><span>Hours</span></div>
+        <div class="unit"><b id="cd-m">--</b><span>Minutes</span></div>
+        <div class="unit"><b id="cd-s">--</b><span>Seconds</span></div>
+      </div>
+      <p class="count-note" id="cd-note">Saturday, November 7, 2026 &middot; 1:30 in the afternoon</p>
+    </div>
+  </section>
+
+  <!-- Events -->
+  <section class="band events-band" id="details">
+    <div class="wash sage"></div>
+    <img class="flora tr sm" src="img/bloom-corner.webp" alt="">
+    <div class="inner">
+      <div class="head">
+        <p class="eyebrow">Where &amp; when</p>
+        <h2>The celebration</h2>
+      </div>
+      <div class="events">
+        <article class="event blue">
+          <span class="ico"><svg><use href="#church"/></svg></span>
+          <span class="kind">Ceremony</span>
+          <span class="when">Saturday &middot; November 7, 2026<br>1:30 PM</span>
+          <h3>Cathedral of the Most Holy Trinity</h3>
+          <p class="addr">Gahonon, Daet, Camarines Norte</p>
+          <p class="officiant">Officiated by Rev. Fr. Eduardo G. Regore, Jr.</p>
+          <a class="btn" href="https://maps.app.goo.gl/Hh3dxqaPTtwz1pgPA" target="_blank" rel="noopener"><svg><use href="#pin"/></svg>Get directions</a>
+        </article>
+        <article class="event sage">
+          <span class="ico"><svg><use href="#glasses"/></svg></span>
+          <span class="kind">Reception</span>
+          <span class="when">Right after the ceremony</span>
+          <h3>Bluerock Event Center</h3>
+          <p class="addr">P1 Metropark Village, Magang, Daet, Camarines Norte</p>
+          <a class="btn sage" href="https://maps.app.goo.gl/Hj7ifFVv3rUKKFvk6" target="_blank" rel="noopener"><svg><use href="#pin"/></svg>Get directions</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="band gallery-band">
+    <div class="wash blue"></div>
+    <div class="inner">
+      <div class="head">
+        <p class="eyebrow">Us, lately</p>
+        <h2>A few of our favorite moments</h2>
+      </div>
+      <div class="gallery" id="gallery">
+        <button type="button" class="polaroid" data-cap="always" aria-label="View photo 1"><img src="img/g1.jpg" alt="Ron kissing Cath on the cheek" loading="lazy"></button>
+        <button type="button" class="polaroid" data-cap="silly us" aria-label="View photo 2"><img src="img/g2.jpg" alt="Ron and Cath making playful faces by a white block" loading="lazy"></button>
+        <button type="button" class="polaroid" data-cap="side by side" aria-label="View photo 3"><img src="img/g3.jpg" alt="Ron and Cath seated side by side, smiling" loading="lazy"></button>
+        <button type="button" class="polaroid" data-cap="forever" aria-label="View photo 4"><img src="img/g4.jpg" alt="Cath showing her ring while Ron kicks up a leg" loading="lazy"></button>
+        <button type="button" class="polaroid" data-cap="best friends" aria-label="View photo 5"><img src="img/g5.jpg" alt="Ron and Cath being silly while seated" loading="lazy"></button>
+        <button type="button" class="polaroid" data-cap="you &amp; me" aria-label="View photo 6"><img src="img/g6.jpg" alt="Ron and Cath standing back to back, glancing at each other" loading="lazy"></button>
+        <button type="button" class="polaroid" data-cap="us two" aria-label="View photo 7"><img src="img/g7.jpg" alt="Cath laughing behind her hand as Ron looks on" loading="lazy"></button>
+      </div>
+      <p class="swipe-hint">Swipe to see more &middot; tap to enlarge</p>
+    </div>
+  </section>
+
+  <!-- Entourage -->
+  <section class="band ent-band">
+    <img class="flora tl sm" src="img/bloom-corner.webp" alt="">
+    <img class="flora br sm" src="img/bloom-corner.webp" alt="">
+    <div class="inner">
+      <div class="head">
+        <p class="eyebrow">With the people who walk with us</p>
+        <h2>Our entourage</h2>
+      </div>
+      <div class="ent narrow">
+        <div class="group">
+          <h3>Parents</h3>
+          <div class="pair">
+            <div class="col"><span class="sub">of the Groom</span><ul class="names-list"><li>Rodel S. Lagumen</li><li>Analyn O. Lagumen</li></ul></div>
+            <div class="col"><span class="sub">of the Bride</span><ul class="names-list"><li>Manolo S. Ilagan</li><li>Sarah B. Ilagan</li></ul></div>
+          </div>
+        </div>
+
+        <div class="group">
+          <h3>Principal Sponsors</h3>
+          <div class="pair">
+            <ul class="col names-list">
+              <li>Mr. Glenn S. Ilagan</li><li>Mr. Arnel Aladano</li><li>Mr. Jay Cambronero</li><li>Mr. Ariel Racelis</li>
+              <li>Mr. Roberto A. Manahan</li><li>Mr. Francisco Argarin</li><li>Hon. Jonah Pimentel</li>
+            </ul>
+            <ul class="col names-list">
+              <li>Mrs. Emma I. Gadil</li><li>Mrs. Nancy B. Delos Santos</li><li>Mrs. Diana B. Aban</li><li>Mrs. Lerma C. Ocan</li>
+              <li>Mrs. Maribel T. Artiaga</li><li>Mrs. Marilou C. Tejares</li><li>Mrs. Amor L. Guzman</li><li>Engr. Ruth A. Racca</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="group">
+          <h3>Best Man &amp; Maid of Honor</h3>
+          <div class="pair">
+            <div class="col"><ul class="names-list"><li>Ralph Royeen A. Lagumen</li></ul></div>
+            <div class="col"><ul class="names-list"><li>Ruby Ann A. Lagumen</li></ul></div>
+          </div>
+        </div>
+
+        <div class="group">
+          <h3>Secondary Sponsors</h3>
+          <div class="pair">
+            <div class="col"><span class="sub">To light our path</span><ul class="names-list"><li>Raben Andro A. Lagumen</li><li>Monika Regina Ramores</li></ul></div>
+            <div class="col"><span class="sub">To clothe us as one</span><ul class="names-list"><li>Arnel L. Abasolo Jr.</li><li>Julie Anne L. Nuylan</li><li>Mark Sherwin B. Ilagan</li><li>Mary Ann V. Ibasco</li></ul></div>
+          </div>
+          <div class="pair" style="margin-top:14px">
+            <div class="col"><span class="sub">To bind us together</span><ul class="names-list"><li>Bruce Adam A. Pandeagua</li><li>Kryzia Mae C. Abanto</li></ul></div>
+            <div class="col"><span class="sub">To add color to our lives</span><ul class="names-list"><li>Miguel E. Alilano</li><li>Marinelle T. Artiaga</li><li>Raniel Niko Lagumen</li><li>Erlyn E. Napao</li></ul></div>
+          </div>
+        </div>
+
+        <div class="group">
+          <h3>Our little ones</h3>
+          <div class="solo">
+            <div class="col"><span class="role">Ring Bearer</span><span>Robin James A. Lagumen</span></div>
+            <div class="col"><span class="role">Bible Bearer</span><span>Reighnier Andrei Lagumen</span></div>
+            <div class="col"><span class="role">Coin Bearer</span><span>Mark Seveh Ilagan</span></div>
+            <div class="col girls"><span class="role">Flower Girls</span><span class="girls-names"><span>Ashley Chloe R. Ilagan</span><span>Estrella S. Lagumen</span><span>Luningning O. Alilano</span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Attire -->
+  <section class="band attire-band">
+    <div class="wash sage"></div>
+    <div class="inner">
+      <div class="head">
+        <p class="eyebrow">A little inspiration</p>
+        <h2>Attire guide</h2>
+      </div>
+      <div class="attire-frame"><img src="img/attire.jpg" alt="Outfit inspiration in dusty blue, sage, cream and denim tones for sponsors and guests" loading="lazy"></div>
+      <p class="attire-note">Just a guide, never a rule. Come as you are, and most of all, come ready to celebrate with us.</p>
+    </div>
+  </section>
+
+  <!-- Gifts -->
+  <section class="band gift-band">
+    <div class="wash blue"></div>
+    <img class="flora tr sm" src="img/bloom-corner.webp" alt="">
+    <div class="inner">
+      <div class="head">
+        <p class="eyebrow">Gifts</p>
+        <h2>Your presence is our gift</h2>
+      </div>
+      <div class="prose narrow">
+        <p>Having you with us on our special day is already the greatest gift. Your love, presence, and prayers mean the world to us.</p>
+        <p>If you wish to give a token of love, any gift is warmly welcomed and sincerely appreciated. Monetary gifts would also be a meaningful help as we build our future together.</p>
+        <p>Above all, we are grateful to celebrate with you. <svg style="width:16px;height:16px;fill:var(--blue);vertical-align:-2px" aria-hidden="true"><use href="#heart"/></svg></p>
+      </div>
+      <div class="qr-row">
+        <figure class="qr"><img src="img/bpi.png" alt="BPI InstaPay QR code" loading="lazy"><span>BPI</span></figure>
+        <figure class="qr g"><img src="img/gcash.png" alt="GCash InstaPay QR code" loading="lazy"><span>GCash</span></figure>
+      </div>
+      <p class="small-note">Viewing on your phone? Take a screenshot and upload it using your banking or GCash app&rsquo;s QR scanner.</p>
+    </div>
+  </section>
+
+  <!-- Snap & Share -->
+  <section class="band snap-band">
+    <div class="wash blue"></div>
+    <div class="inner snap-grid">
+      <div>
+        <div class="head">
+          <p class="eyebrow">Unplugged ceremony</p>
+          <h2>Snap &amp; share</h2>
+        </div>
+        <div class="prose">
+          <p>We kindly ask that phones and cameras stay away during our ceremony, so you can be fully present with us.</p>
+          <p>After that, help us remember every moment! We&rsquo;d love to see our day through your eyes. Scan the code to share your favorite photos and videos with us.</p>
+        </div>
+      </div>
+      <figure class="snap-card"><img src="img/snap.png" alt="QR code to upload photos for Ron and Cath's wedding" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section class="band rsvp-band" id="rsvp">
+    <div class="wash blue"></div>
+    <img class="flora tl" src="img/bloom-corner.webp" alt="">
+    <img class="flora br" src="img/bloom-corner.webp" alt="">
+    <div class="inner narrow rsvp-card">
+      <p class="eyebrow">RSVP</p>
+      <p class="seat">We have reserved a seat for you</p>
+      <p>Kindly do us a small favor and confirm your attendance through our RSVP, so we can prepare for you properly. We can&rsquo;t wait to celebrate this special day together!</p>
+      <p class="limited">As much as we would love to celebrate with everyone dear to us, our seats are truly limited. Thank you for understanding, and for your love.</p>
+      <a class="btn cream" href="https://docs.google.com/forms/d/e/1FAIpQLSfam8FhQg_8670uTW_XiNWtFH8qVjjbNTjx0tL3LVQ_yn-xYA/viewform" target="_blank" rel="noopener"><svg><use href="#heart"/></svg>Reply to RSVP</a>
+      <div class="rsvp-qr"><img src="img/rsvp.png" alt="QR code for the RSVP form"><span>Or scan with your phone</span></div>
+    </div>
+  </section>
+
+  <footer>
+    <img class="flora bl sm" src="img/bloom-corner.webp" alt="">
+    <img class="flora br sm" src="img/bloom-corner.webp" alt="">
+    <div class="inner">
+      <span class="names-sm">Ron &amp; Cath</span>
+      <span class="d">11 &middot; 07 &middot; 2026</span>
+      <p class="thanks">With all our love.</p>
+    </div>
+  </footer>
+</main>
+
+<button type="button" class="song" id="song" aria-label="Play our song" hidden>
+  <span class="disc"><svg class="ic-play"><use href="#play"/></svg><svg class="ic-pause"><use href="#pause"/></svg></span>
+  <span><small>Our song</small><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span></span>
+</button>
+<audio id="music" src="img/song.mp3" preload="auto" loop></audio>
+
+<div class="lightbox" id="lightbox" hidden>
+  <button type="button" id="lb-close" aria-label="Close photo">&times;</button>
+  <img id="lb-img" alt="">
+</div>
+
+<script>
+  // Countdown to 7 Nov 2026, 1:30 PM Philippine time
+  (function () {
+    var target = new Date('2026-11-07T13:30:00+08:00').getTime();
+    var d = document.getElementById('cd-d'), h = document.getElementById('cd-h'),
+        m = document.getElementById('cd-m'), s = document.getElementById('cd-s'),
+        note = document.getElementById('cd-note');
+    function pad(n) { return String(n).padStart(2, '0'); }
+    function tick() {
+      var diff = target - Date.now();
+      if (diff <= 0) {
+        d.textContent = h.textContent = m.textContent = s.textContent = '00';
+        note.textContent = 'We said “I do” before God. Thank you for celebrating with us.';
+        return;
+      }
+      var sec = Math.floor(diff / 1000);
+      d.textContent = Math.floor(sec / 86400);
+      h.textContent = pad(Math.floor(sec % 86400 / 3600));
+      m.textContent = pad(Math.floor(sec % 3600 / 60));
+      s.textContent = pad(sec % 60);
+      setTimeout(tick, 1000);
+    }
+    tick();
+  })();
+
+  // Welcome screen + music
+  (function () {
+    var welcome = document.getElementById('welcome'), open = document.getElementById('open-invite'),
+        audio = document.getElementById('music'), pill = document.getElementById('song');
+    document.body.classList.add('locked');
+    audio.volume = 0.8;
+    function sync() {
+      var on = !audio.paused;
+      pill.classList.toggle('playing', on);
+      pill.setAttribute('aria-label', on ? 'Pause our song' : 'Play our song');
+    }
+    audio.addEventListener('play', sync); audio.addEventListener('pause', sync);
+    open.addEventListener('click', function () {
+      var p = audio.play(); if (p && p.catch) p.catch(function () {});
+      welcome.classList.add('gone');
+      document.body.classList.remove('locked');
+      pill.hidden = false;
+      window.scrollTo(0, 0);
+      setTimeout(function () { welcome.hidden = true; }, 900);
+    });
+    pill.addEventListener('click', function () {
+      if (audio.paused) { var p = audio.play(); if (p && p.catch) p.catch(function () {}); }
+      else audio.pause();
+    });
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden && !audio.paused) { audio.pause(); audio.dataset.resume = '1'; }
+      else if (!document.hidden && audio.dataset.resume) { delete audio.dataset.resume; audio.play().catch(function () {}); }
+    });
+    open.focus();
+  })();
+
+  // Photo lightbox
+  (function () {
+    var lb = document.getElementById('lightbox'), img = document.getElementById('lb-img'),
+        close = document.getElementById('lb-close'), last = null;
+    document.querySelectorAll('#gallery .polaroid').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var src = b.querySelector('img');
+        img.src = src.src; img.alt = src.alt; last = b;
+        lb.hidden = false; close.focus();
+      });
+    });
+    function hide() { lb.hidden = true; img.src = ''; if (last) last.focus(); }
+    close.addEventListener('click', hide);
+    lb.addEventListener('click', function (e) { if (e.target === lb) hide(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !lb.hidden) hide(); });
+  })();
+</script>
+
+</body>
+</html>
